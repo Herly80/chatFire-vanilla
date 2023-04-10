@@ -1,0 +1,203 @@
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+body {
+    background: #0C0C2B;
+}
+
+.container-main {
+    display: flex;
+    position: relative;
+    height: 600px;
+    width: 700px;
+    box-shadow: 0 25px 45px;
+    left: 0px;
+    top: 0px;
+    margin: 25px auto;
+}
+
+.container-head {
+    display: flex;
+    width: 700px;
+    height: 100px;
+    border-bottom: solid grey;
+}
+.container-head h1 {
+    font-size: 4rem;
+    color: white;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 2rem;
+}
+
+.botones {
+    display: flex;
+    margin-left: 20vw;
+    margin-top: 2.5vw;
+    gap: 2rem;
+}
+
+/*botones de entrada y salida en 3D*/
+.btnSalir {
+    height: 4rem;
+    position: relative;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    outline-offset: 4px;
+    transition: filter 250ms;
+}
+
+.shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: hsl(0deg 0% 0% / 0.25);
+    will-change: transform;
+    transform: translateY(2px);
+    transition:
+        transform 600ms cubic-bezier(.3, .7, .4, 1);
+}
+
+.edge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: linear-gradient(to left,
+            hsl(340deg 100% 16%) 0%,
+            hsl(340deg 100% 32%) 8%,
+            hsl(340deg 100% 32%) 92%,
+            hsl(340deg 100% 16%) 100%);
+}
+
+.front {
+    display: block;
+    position: relative;
+    padding: 12px 42px;
+    border-radius: 12px;
+    font-size: 1.25rem;
+    color: white;
+    background: hsl(345deg 100% 47%);
+    will-change: transform;
+    transform: translateY(-4px);
+    transition:
+        transform 600ms cubic-bezier(.3, .7, .4, 1);
+}
+
+.btnSalir:hover {
+    filter: brightness(110%);
+}
+
+.btnSalir:hover .front {
+    transform: translateY(-6px);
+    transition:
+        transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.btnSalir:active .front {
+    transform: translateY(-2px);
+    transition: transform 34ms;
+}
+
+.btnSalir:hover .shadow {
+    transform: translateY(4px);
+    transition:
+        transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.btnSalir:active .shadow {
+    transform: translateY(1px);
+    transition: transform 34ms;
+}
+
+.btnSalir:focus:not(:focus-visible) {
+    outline: none;
+}
+
+.btnIngresar {
+    height: 4rem;
+    position: relative;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    outline-offset: 4px;
+    transition: filter 250ms;
+}
+
+.front2 {
+    display: block;
+    position: relative;
+    padding: 12px 42px;
+    border-radius: 12px;
+    font-size: 1.25rem;
+    color: white;
+    background: hsl(120, 80%, 53%);
+    will-change: transform;
+    transform: translateY(-4px);
+    transition:
+        transform 600ms cubic-bezier(.3, .7, .4, 1);
+}
+
+.btnIngresar:hover {
+    filter: brightness(110%);
+}
+
+.btnIngresar:hover .front2 {
+    transform: translateY(-6px);
+    transition:
+        transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.btnIngresar:active .front2 {
+    transform: translateY(-2px);
+    transition: transform 34ms;
+}
+
+.btnIngresar:hover .shadow {
+    transform: translateY(4px);
+    transition:
+        transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.btnIngresar:active .shadow {
+    transform: translateY(1px);
+    transition: transform 34ms;
+}
+
+.btnIngresar:focus:not(:focus-visible) {
+    outline: none;
+}
+
+
+
+/*Estilos del footer*/
+footer {
+    background: linear-gradient(#929295, #5E5E60 );
+    text-align: center;
+    height: 30px;
+}
+
+footer p {
+    color: white;
+    font-size: 2rem;
+}
+
+footer p a {
+    text-decoration: none;
+    color: white;
+    font-size: 2rem;
+}
+
+footer p a:hover {
+    color: black;
+}

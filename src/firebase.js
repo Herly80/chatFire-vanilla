@@ -1,7 +1,7 @@
  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
- import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js'
+ import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js'
  import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js'
- 
+
  const firebaseConfig = {
    apiKey: "AIzaSyA3i2IJYOoGa0xbfwhdfpFSLF2VUu-_WHs",
    authDomain: "chatfire-4a2f8.firebaseapp.com",
@@ -18,8 +18,11 @@
 
  const registerUser = () => signInWithPopup(auth, provider)
 
+ const outSesion = signOut
+
+ const onAuthUser = onAuthStateChanged
 
 
  export {
-    registerUser, auth, provider,
+    registerUser, auth, provider, onAuthUser, outSesion,
  };

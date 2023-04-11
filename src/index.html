@@ -14,17 +14,17 @@
             <div class="container">
                 <a href="#" class="navbar-brand">ChatFire</a>
                 <div>
-                    <button class="btn btn-danger" id="btnSalir">
+                    <button class="btn btn-outline-danger" id="btnSalir">
                         Salir
                     </button>
-                    <button class="btn btn-primary" id="btnIngresar">
+                    <button class="btn btn-outline-primary" id="btnIngresar">
                         Ingresar
                     </button>
                 </div>
             </div>
         </nav>
 
-        <main class="container mt-2">
+        <main class="container mt-2" id="chat">
             <div class="text-start">
                 <span class="badge bg-secondary">
                     Texto
@@ -36,6 +36,11 @@
                 </span>
             </div>
         </main>
+        <form class="container fixed-bottom mb-2" id="formulario">
+            <input type="text" class="form-control mb-2" name="msg" placeholder="Mensaje...">
+            <button class="btn btn-dark w-100" id="btnEnviar">Enviar</button>
+        </form>
+       
     </div>
        
   

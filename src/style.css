@@ -1,14 +1,13 @@
-html {
+/*html {
     box-sizing: border-box;
     font-size: 62.5%;
-}
+}*/
 
 body {
-    background: #0C0C2B;
+    background-color: #0C0C2B;
 }
 
 .container-main {
-    display: flex;
     position: relative;
     height: 600px;
     width: 700px;
@@ -18,7 +17,7 @@ body {
     margin: 25px auto;
 }
 
-.container-head {
+/*.container-head {
     display: flex;
     width: 700px;
     height: 100px;
@@ -26,7 +25,7 @@ body {
 }
 .container-head h1 {
     font-size: 4rem;
-    color: white;
+    color: rgb(158, 6, 6);
     align-items: center;
     justify-content: flex-start;
     padding-left: 2rem;
@@ -40,7 +39,7 @@ body {
 }
 
 /*botones de entrada y salida en 3D*/
-.btnSalir {
+/*.btnSalir {
     height: 4rem;
     position: relative;
     border: none;
@@ -181,7 +180,7 @@ body {
 
 
 /*Estilos del footer*/
-footer {
+/*footer {
     background: linear-gradient(#929295, #5E5E60 );
     text-align: center;
     height: 30px;

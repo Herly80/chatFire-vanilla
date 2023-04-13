@@ -1,6 +1,6 @@
  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
  import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js'
- import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js'
+ import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js'
 
  const firebaseConfig = {
    apiKey: "AIzaSyA3i2IJYOoGa0xbfwhdfpFSLF2VUu-_WHs",
@@ -14,6 +14,7 @@
  // Initialize Firebase
  const app = initializeApp(firebaseConfig);
  const auth = getAuth(app);
+ const db = getFirestore(app);
  const provider = new GoogleAuthProvider();
 
  const registerUser = () => signInWithPopup(auth, provider)
@@ -22,7 +23,14 @@
 
  const onAuthUser = onAuthStateChanged
 
+ const getCurrentUser = () => auth.currentUser;
+ const docRef =  (formulario, userid, fecha) => addDoc(collection(db, "chats"), {
+  msg: formulario,
+  uid: userid,
+  fecha: fecha
+});
+
 
  export {
-    registerUser, auth, provider, onAuthUser, outSesion,
+    registerUser, auth, provider, onAuthUser, outSesion, getCurrentUser, docRef
  };

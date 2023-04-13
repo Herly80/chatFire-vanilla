@@ -24,7 +24,9 @@
             </div>
         </nav>
 
-        <main class="container mt-2" id="chat">
+        <p class="lead my-5 text-center d-none" id="msgInicio">Para poder chatear debes iniciar sesión</p>
+
+        <main class="container mt-2 d-none" id="chat">
             <div class="text-start">
                 <span class="badge bg-secondary">
                     Texto
@@ -36,9 +38,9 @@
                 </span>
             </div>
         </main>
-        <form class="container fixed-bottom mb-2" id="formulario">
+        <form class="container fixed-bottom mb-2 d-none" id="formulario">
             <input type="text" class="form-control mb-2" name="msg" placeholder="Mensaje...">
-            <button class="btn btn-dark w-100" id="btnEnviar">Enviar</button>
+            <button class="btn btn-dark w-100" id="btnEnviar" type="submit">Enviar</button>
         </form>
        
     </div>

@@ -1,4 +1,7 @@
-import { registerUser, provider, auth, onAuthUser, outSesion, getCurrentUser, docRef } from './firebase.js'
+import { 
+    registerUser, provider, auth, onAuthUser, outSesion, getCurrentUser, docRef, getOnSnapshot, q
+} 
+from './firebase.js'
 
 let previosTitle = document.title;
 
@@ -17,6 +20,7 @@ const chat = document.querySelector('#chat')
 const formulario = document.querySelector('#formulario')
 const btnEnviar = document.querySelector('#btnEnviar')
 const msgInicio = document.querySelector('#msgInicio')
+const msgTemplate = document.querySelector('#msgTemplate')
 
 
 btnIngresar.addEventListener('click', async() => {
@@ -40,6 +44,28 @@ btnIngresar.addEventListener('click', async() => {
               visualizeElement(chat)
               visualizeElement(formulario)
               removeElement(msgInicio)
+
+              //manipulando el template para que pinte los mensajes del chat
+              const unsubscribe = getOnSnapshot(q, (snapshot) => {
+                snapshot.docChanges().forEach((change) => {
+                  if (change.type === "added") {
+                      console.log("New msg: ", change.doc.data());
+
+                      const clone = msgTemplate.content.cloneNode(true);  //se crea un clon como "respaldo" y es como el fragment de React
+                      clone.querySelector('span').textContent = change.doc.data().msg;
+
+                      if(user.uid === change.doc.data().uid) {
+                        clone.querySelector('span').classList.add('bg-success');
+                      } else {
+                        clone.querySelector('span').classList.add('bg-secondary');
+                      }
+                      chat.append(clone);
+                  }
+                  
+                });
+              });
+             
+
             } else {
                 console.log('no existe el usuario')
                 removeElement(btnSalir)
@@ -60,14 +86,24 @@ btnSalir.addEventListener('click', async() => {
 formulario.addEventListener('submit', async(e) => {
     e.preventDefault();
     console.log(formulario.msg.value);
+    if(!formulario.msg.value.trim()){
+        formulario.msg.value = '';
+        formulario.msg.focus();
+        return console.log('Tienes que escribir algo')
+    }
     const msgTimeReal = formulario.msg.value.trim()
     const user = getCurrentUser()
     const userId = user.uid
     const fecha = new Date()
+
     try {
+        btnEnviar.disabled = true; //para desahibilitar el boton y el usuario no pueda enviarlo muchas veces
         await docRef(msgTimeReal, userId, fecha);
+        formulario.msg.value = ''; //limpia el formulario una vez se envíe el mensage
     } catch (error) {
         console.log(error)
+    } finally {
+        btnEnviar.disabled = false; //asi el usuario no podrá enviar el mismo mensaje una y otra vez
     }
   
 })

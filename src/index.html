@@ -27,16 +27,18 @@
         <p class="lead my-5 text-center d-none" id="msgInicio">Para poder chatear debes iniciar sesión</p>
 
         <main class="container mt-2 d-none" id="chat">
-            <div class="text-start">
-                <span class="badge bg-secondary">
-                    Texto
-                </span>
-            </div>
-            <div class="text-end">
-                <span class="badge bg-success">
-                    Texto
-                </span>
-            </div>
+            <template id="msgTemplate">
+                <div class="text-start">
+                    <span class="badge">
+                        Texto
+                    </span>
+                </div>
+                <!-- <div class="text-end">
+                    <span class="badge">
+                        Texto
+                    </span>
+                </div> -->
+            </template>
         </main>
         <form class="container fixed-bottom mb-2 d-none" id="formulario">
             <input type="text" class="form-control mb-2" name="msg" placeholder="Mensaje...">

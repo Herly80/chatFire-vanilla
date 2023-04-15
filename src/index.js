@@ -65,7 +65,7 @@ btnIngresar.addEventListener('click', async() => {
                       }
                       chat.append(clone);
                   }
-                  
+                  chat.scrollTop = chat.scrollHeight;
                 });
               });
              

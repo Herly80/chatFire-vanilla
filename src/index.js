@@ -26,9 +26,9 @@ const msgTemplate = document.querySelector('#msgTemplate')
 btnIngresar.addEventListener('click', async() => {
     try {
         const result = await registerUser(auth, provider)
-        console.log(result)
+        //console.log(result)
     } catch (error) {
-        console.log(error)
+        //console.log(error)
     }
 })
 
@@ -38,7 +38,7 @@ btnIngresar.addEventListener('click', async() => {
     let unsubscribe;
     const userExist = () => onAuthUser(auth, (user) => {
             if (user) {
-              console.log('existe el usuario', user)
+              //console.log('existe el usuario', user)
               visualizeElement(btnSalir)
               removeElement(btnIngresar)
               visualizeElement(chat)
@@ -50,7 +50,7 @@ btnIngresar.addEventListener('click', async() => {
               unsubscribe = getOnSnapshot(q, (snapshot) => {
                 snapshot.docChanges().forEach((change) => {
                   if (change.type === "added") {
-                      console.log("New msg: ", change.doc.data());
+                      //console.log("New msg: ", change.doc.data());
 
                       const clone = msgTemplate.content.cloneNode(true);  //se crea un clon como "respaldo" y es como el fragment de React
                       clone.querySelector('span').textContent = change.doc.data().msg;
@@ -71,7 +71,7 @@ btnIngresar.addEventListener('click', async() => {
              
 
             } else {
-                console.log('no existe el usuario')
+                //console.log('no existe el usuario')
                 removeElement(btnSalir)
                 visualizeElement(btnIngresar)
                 removeElement(chat)
@@ -97,7 +97,7 @@ formulario.addEventListener('submit', async(e) => {
     if(!formulario.msg.value.trim()){
         formulario.msg.value = '';
         formulario.msg.focus();
-        return console.log('Tienes que escribir algo')
+        return alert('Tienes que escribir algo');
     }
     const msgTimeReal = formulario.msg.value.trim()
     const user = getCurrentUser()

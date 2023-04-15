@@ -1,11 +1,11 @@
 .chat-container {
-    height: calc(100vh - 200px);
+    height: calc(100vh - 220px);
     overflow-y: scroll;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
     .chat-container {
-        height: calc(100vh - 210px);
+        height: calc(100vh - 170px);
         overflow-y: scroll;
 }
 }

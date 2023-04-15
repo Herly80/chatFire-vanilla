@@ -1,3 +1,13 @@
+.chat-container {
+    height: calc(100vh - 170px);
+    overflow-y: scroll;
+}
+
+
+
+
+
+
 /*html {
     box-sizing: border-box;
     font-size: 62.5%;

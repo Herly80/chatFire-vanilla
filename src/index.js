@@ -35,7 +35,7 @@ btnIngresar.addEventListener('click', async() => {
     const removeElement = (element) => element.classList.add('d-none')
     const visualizeElement = (element) => element.classList.remove('d-none')
 
-
+    let unsubscribe;
     const userExist = () => onAuthUser(auth, (user) => {
             if (user) {
               console.log('existe el usuario', user)
@@ -46,7 +46,8 @@ btnIngresar.addEventListener('click', async() => {
               removeElement(msgInicio)
 
               //manipulando el template para que pinte los mensajes del chat
-              const unsubscribe = getOnSnapshot(q, (snapshot) => {
+              chat.innerHTML = '';
+              unsubscribe = getOnSnapshot(q, (snapshot) => {
                 snapshot.docChanges().forEach((change) => {
                   if (change.type === "added") {
                       console.log("New msg: ", change.doc.data());
@@ -55,8 +56,11 @@ btnIngresar.addEventListener('click', async() => {
                       clone.querySelector('span').textContent = change.doc.data().msg;
 
                       if(user.uid === change.doc.data().uid) {
+
+                        clone.querySelector('div').classList.add('text-end'); // me va a colocar los mensajes que yo envíe a la derecha
                         clone.querySelector('span').classList.add('bg-success');
                       } else {
+                        clone.querySelector('div').classList.add('text-start'); //coloca lois msgs que coloca otro usuario a la izquierda
                         clone.querySelector('span').classList.add('bg-secondary');
                       }
                       chat.append(clone);
@@ -73,6 +77,10 @@ btnIngresar.addEventListener('click', async() => {
                 removeElement(chat)
                 removeElement(formulario)
                 visualizeElement(msgInicio)
+
+                if(unsubscribe) { //si existe el unsubscribe la ejecutamos ya que arriba se inicia y con eso eliminamos esa suscripcion es decir, elimina el observable
+                    unsubscribe();
+                }
             }
           });
           userExist()
